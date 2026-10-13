@@ -48,9 +48,37 @@ The output contains the scalar encoding value, quantized level, five-bit code,
 and the four mapped response channels: `hrs_read`, `hrs_peak`, `lrs_read`, and
 `lrs_peak`.
 
+## Released animal-level model artifact
+
+The primary animal-level model reported in the manuscript is released as
+`model_artifacts/best_dff_rc_gradient_boosting_model.joblib`. It is a
+scikit-learn `GradientBoostingClassifier` with `random_state=20260712`,
+`n_estimators=100`, `learning_rate=0.1`, `max_depth=3`,
+`min_samples_leaf=1`, `subsample=1.0`, `max_features=None`, and
+`loss=log_loss`. Class `0` is `sham` and class `1` is `SNI`.
+
+The artifact contains the fixed order of all 195 aggregated features, the
+training quantizer, the 10-s window and 300-point resampling settings, and the
+reservoir encoding formula. The complete feature order and metadata are also
+provided in `model_artifacts/model_metadata.json`.
+
+To run deterministic inference on an anonymized aggregated feature row:
+
+```bash
+python predict_aggregated_features.py \
+  --model model_artifacts/best_dff_rc_gradient_boosting_model.joblib \
+  --input example_aggregated_features.csv \
+  --output example_prediction_reproduced.csv
+```
+
+The expected output is stored in `example_prediction.csv`. The exploratory
+ExtraTrees models were not used for the primary animal-level result, and no
+additional neural network was used in this study.
+
 ## Reproducibility
 
-The workflow requires Python 3.10 or newer, NumPy, and pandas. The measured
-response table is included because it is a device calibration artifact rather
-than animal data. Random seeds are not used by the deterministic segment
-processing step.
+The workflow requires Python 3.10 or newer. NumPy and pandas support segment
+processing; scikit-learn and joblib support deterministic model inference. The
+measured response table is included because it is a device calibration
+artifact rather than animal data. Raw animal recordings and
+animal/session/trial splitting code are not included.
