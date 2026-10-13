@@ -71,9 +71,30 @@ python predict_aggregated_features.py \
   --output example_prediction_reproduced.csv
 ```
 
-The expected output is stored in `example_prediction.csv`. The exploratory
-ExtraTrees models were not used for the primary animal-level result, and no
-additional neural network was used in this study.
+The expected output is stored in `example_prediction.csv`.
+
+## Released ExtraTrees artifact
+
+The ExtraTrees artifact requested for reproducibility is provided in
+`extratrees_artifacts/rc_gain_models.joblib`. The fusion branch contains an
+ExtraTrees classifier with 1,200 trees, `class_weight="balanced"`,
+`min_samples_leaf=1`, `max_features="sqrt"`, and `random_state=20260706`.
+The fixed DFF and reservoir feature orders, selected reservoir group,
+classification threshold, and class mapping are recorded in
+`extratrees_artifacts/model_metadata.json`.
+
+Run deterministic inference with:
+
+```bash
+python predict_extratrees.py \
+  --model extratrees_artifacts/rc_gain_models.joblib \
+  --input example_extratrees_features.csv \
+  --output example_extratrees_prediction_reproduced.csv \
+  --branch fusion
+```
+
+The expected result is provided in `example_extratrees_prediction.csv`.
+No additional neural network was used in this study.
 
 ## Reproducibility
 
