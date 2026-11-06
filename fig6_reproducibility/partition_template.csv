@@ -1,0 +1,2 @@
+event_id,source_group_id,recording_id,session_id,trial_id,duration_s,inclusion_status,partition
+example_event_001,anonymized_source_001,anonymized_recording_001,session_001,trial_001,10.0,included,held_out_example
