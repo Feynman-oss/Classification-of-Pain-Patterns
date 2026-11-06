@@ -1,5 +1,8 @@
 # 10-s fluorescence-segment processing
 
+The Figure 6 public reproducibility boundary, package inventory, and controlled-data
+documentation are provided in [`fig6_reproducibility/`](fig6_reproducibility/README.md).
+
 This repository contains the public code for processing an already prepared
 10-s fluorescence segment. It implements the signal transformation used in
 the manuscript:
