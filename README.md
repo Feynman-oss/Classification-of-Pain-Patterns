@@ -117,15 +117,12 @@ event-disjoint cross-validation, bootstrap analysis, McNemar testing, ROC
 analysis, and scripts for Fig. 6f, Fig. 6g, Fig. S12, and Fig. S13. Raw
 fluorescence data remain restricted as described in DATA_ACCESS.md.
 
-
-
-
-
 ## Canonical manuscript release
 
-The immutable manuscript-associated version is **v2.0.1**. Use the tagged
-GitHub release at
-https://github.com/Feynman-oss/Classification-of-Pain-Patterns/releases/tag/v2.0.1.
-The release includes an MIT licence, citation metadata, a file manifest, and
-SHA-256 checksums. Earlier v1.0.x archives and `figure6-v2.0.1` are retained for
-provenance but are superseded for manuscript citation by `v2.0.1`.
+The manuscript-associated version is **v2.0.2**:
+https://github.com/Feynman-oss/Classification-of-Pain-Patterns/releases/tag/v2.0.2.
+The release includes exact dependency locks, a Conda environment, a Dockerfile,
+clean-environment validation, an MIT licence, citation metadata, a file
+manifest, and SHA-256 checksums. Earlier releases are retained for provenance
+but are superseded for manuscript citation by `v2.0.2`. See `ENVIRONMENT.md`
+for warning-free reproduction instructions.

@@ -5,8 +5,8 @@ type: software
 authors:
   - family-names: "Wang"
     given-names: "Kun"
-version: "v2.0.1"
+version: "v2.0.2"
 date-released: "2026-11-10"
 repository-code: "https://github.com/Feynman-oss/Classification-of-Pain-Patterns"
-url: "https://github.com/Feynman-oss/Classification-of-Pain-Patterns/releases/tag/v2.0.1"
+url: "https://github.com/Feynman-oss/Classification-of-Pain-Patterns/releases/tag/v2.0.2"
 license: MIT

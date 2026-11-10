@@ -1,0 +1,16 @@
+{
+  "release": "v2.0.2",
+  "validation_date": "2026-11-10",
+  "operating_system": "Microsoft Windows 10 10.0.19045 SP0 64-bit",
+  "python": "CPython 3.12.10 64-bit (MSC v.1943)",
+  "warnings_policy": "PYTHONWARNINGS=error",
+  "status": "passed",
+  "version_warnings": 0,
+  "deterministic_examples": "passed",
+  "public_package_validation": "passed",
+  "full_workflow": "passed",
+  "reported_metrics": {
+    "DFF_only_accuracy": 0.854369,
+    "DFF_plus_RC_accuracy": 0.864078
+  }
+}
