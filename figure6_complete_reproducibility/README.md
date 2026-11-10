@@ -2,7 +2,7 @@
 
 This directory replaces the earlier inference-only archive. It separates two model branches that were previously conflated:
 
-1. **195-feature event-aggregated branch.** Each prepared 10-s window yields 29 DFF/rate/peak quantities plus ten RC-related quantities. Five event-level statistics (mean, standard deviation, minimum, maximum and median) produce 195 ordered features. The 32-level quantizer is fitted inside each training fold.
+1. **195-feature event-aggregated branch.** Each prepared 10-s window yields 29 signal-derived quantities (including the scalar used for 32-level encoding) plus ten mapped/derived RC quantities. Five event-level statistics (mean, standard deviation, minimum, maximum and median) produce 195 ordered features. The 32-level quantizer is fitted inside each training fold.
 2. **27 DFF + 9 selected RC feature branch.** The released ExtraTrees model uses the exact 27 DFF features and the nine `binary_shape` RC features listed in `models/extratrees_model_metadata.json`. The public matrix also retains the other RC groups needed for the 81-configuration sensitivity analysis.
 
 ## Contents
@@ -45,3 +45,4 @@ The figure-regeneration script uses the archived reported OOF predictions and so
 - Reported accuracy is calculated over held-out events for Fig. 6g and over held-out 10-s windows for Fig. 6f.
 
 See `DATA_ACCESS.md` for the boundary between the public de-identified package and restricted raw fluorescence recordings.
+
