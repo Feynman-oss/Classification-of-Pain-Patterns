@@ -19,11 +19,11 @@ the manuscript:
 5. represent the level as a most-significant-bit-first five-bit code; and
 6. map the code to the measured four-channel device-response table.
 
-The repository intentionally does **not** contain raw animal photometry data,
-animal/session/trial splitting code, or institution-specific raw-file
-organization. The input to the public workflow is one prepared 10-s segment.
-The `z_min` and `z_max` arguments must be calculated from the authorized
-training partition and must not be estimated from the held-out segment.
+The repository does not redistribute raw animal photometry files. The complete
+public Figure 6 package contains de-identified processed features, fold
+assignments, and all analysis code required after raw-file preprocessing. The
+`z_min` and `z_max` arguments are calculated from the training partition and
+are never estimated from a held-out segment.
 
 ## Input format
 
@@ -108,5 +108,13 @@ No additional neural network was used in this study.
 The workflow requires Python 3.10 or newer. NumPy and pandas support segment
 processing; scikit-learn and joblib support deterministic model inference. The
 measured response table is included because it is a device calibration
-artifact rather than animal data. Raw animal recordings and
-animal/session/trial splitting code are not included.
+artifact rather than animal data. The complete workflow is provided in
+[igure6_complete_reproducibility/](figure6_complete_reproducibility/README.md),
+with a frozen supplementary archive at
+[Figure6_Reproducibility_v2.0.0.zip](Figure6_Reproducibility_v2.0.0.zip).
+It includes both model branches, complete training and threshold selection,
+event-disjoint cross-validation, bootstrap analysis, McNemar testing, ROC
+analysis, and scripts for Fig. 6f, Fig. 6g, Fig. S12, and Fig. S13. Raw
+fluorescence data remain restricted as described in DATA_ACCESS.md.
+
+

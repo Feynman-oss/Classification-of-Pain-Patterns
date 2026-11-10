@@ -1,0 +1,9 @@
+{
+  "public_unit": "event",
+  "n_unique_events_nested": 103,
+  "n_10s_windows_nested": 136,
+  "n_unique_events_window_branch": 103,
+  "n_windows_window_branch": 239,
+  "raw_fluorescence_public": false,
+  "note": "Identifiers were replaced by sequential event IDs; raw fluorescence recordings remain restricted."
+}

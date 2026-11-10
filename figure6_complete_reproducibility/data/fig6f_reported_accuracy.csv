@@ -1,0 +1,4 @@
+﻿feature_set,accuracy,evaluation_unit,validation_scheme,n_evaluation_units
+RC only,0.875,10-s window,fixed random 70/30 window split,72
+DFF only,0.9166666666666666,10-s window,fixed random 70/30 window split,72
+DFF + RC,0.9305555555555556,10-s window,fixed random 70/30 window split,72

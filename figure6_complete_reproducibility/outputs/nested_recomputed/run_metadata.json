@@ -1,0 +1,11 @@
+{
+  "seed": 20260712,
+  "outer_folds": 5,
+  "inner_folds": 4,
+  "threshold_grid": [
+    0.1,
+    0.9,
+    0.005
+  ],
+  "quantizer_fitted_within_training_fold": true
+}
