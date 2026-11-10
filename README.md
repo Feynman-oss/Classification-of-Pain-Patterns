@@ -3,6 +3,10 @@
 The Figure 6 public reproducibility boundary, package inventory, and controlled-data
 documentation are provided in [`fig6_reproducibility/`](fig6_reproducibility/README.md).
 
+The single-run raw current-voltage-time exports used to construct the nominal 32-code device
+response table, together with an extraction script and SHA-256 manifest, are available in
+[`raw_device_response/`](raw_device_response/README.md).
+
 This repository contains the public code for processing an already prepared
 10-s fluorescence segment. It implements the signal transformation used in
 the manuscript:
