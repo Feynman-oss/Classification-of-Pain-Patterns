@@ -111,10 +111,11 @@ measured response table is included because it is a device calibration
 artifact rather than animal data. The complete workflow is provided in
 [igure6_complete_reproducibility/](figure6_complete_reproducibility/README.md),
 with a frozen supplementary archive at
-[Figure6_Reproducibility_v2.0.0.zip](Figure6_Reproducibility_v2.0.0.zip).
+[Figure6_Reproducibility_v2.0.1.zip](Figure6_Reproducibility_v2.0.1.zip).
 It includes both model branches, complete training and threshold selection,
 event-disjoint cross-validation, bootstrap analysis, McNemar testing, ROC
 analysis, and scripts for Fig. 6f, Fig. 6g, Fig. S12, and Fig. S13. Raw
 fluorescence data remain restricted as described in DATA_ACCESS.md.
+
 
 
