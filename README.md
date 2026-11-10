@@ -119,3 +119,13 @@ fluorescence data remain restricted as described in DATA_ACCESS.md.
 
 
 
+
+
+## Canonical manuscript release
+
+The immutable manuscript-associated version is **v2.0.1**. Use the tagged
+GitHub release at
+https://github.com/Feynman-oss/Classification-of-Pain-Patterns/releases/tag/v2.0.1.
+The release includes an MIT licence, citation metadata, a file manifest, and
+SHA-256 checksums. Earlier v1.0.x archives and `figure6-v2.0.1` are retained for
+provenance but are superseded for manuscript citation by `v2.0.1`.

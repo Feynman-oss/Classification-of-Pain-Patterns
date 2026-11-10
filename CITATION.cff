@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software package, please cite the archived release."
+title: "Classification of Pain Patterns reproducibility package"
+type: software
+authors:
+  - family-names: "Wang"
+    given-names: "Kun"
+version: "v2.0.1"
+date-released: "2026-11-10"
+repository-code: "https://github.com/Feynman-oss/Classification-of-Pain-Patterns"
+url: "https://github.com/Feynman-oss/Classification-of-Pain-Patterns/releases/tag/v2.0.1"
+license: MIT
