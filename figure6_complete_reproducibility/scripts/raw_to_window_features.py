@@ -46,7 +46,16 @@ def _features(frame: pd.DataFrame) -> dict[str, float | int | str]:
     time_s, signal = time_s[order], signal[order]
     time_s, unique = np.unique(time_s, return_index=True)
     signal = signal[unique]
-    x = np.interp(np.linspace(time_s[0], time_s[-1], N_POINTS), time_s, signal)
+    # Match the historical training workflow: fixed 10-s window boundaries,
+    # endpoint excluded, and endpoint values held outside the sampled range.
+    start = float(frame["window_start_s"].iloc[0]) if "window_start_s" in frame else 0.0
+    stop = float(frame["window_end_s"].iloc[0]) if "window_end_s" in frame else start + WINDOW_SECONDS
+    mask = (time_s >= start) & (time_s < stop)
+    time_s, signal = time_s[mask], signal[mask]
+    if len(signal) < 3:
+        raise ValueError(f"Window {event_id} contains fewer than three samples")
+    target = np.linspace(start, stop, N_POINTS, endpoint=False)
+    x = np.interp(target, time_s, signal, left=signal[0], right=signal[-1])
     dt = WINDOW_SECONDS / N_POINTS
     rate = np.diff(x) / dt
     std = float(np.std(x, ddof=1))
@@ -59,9 +68,9 @@ def _features(frame: pd.DataFrame) -> dict[str, float | int | str]:
         "dff_mean": float(np.mean(x)), "dff_std": std, "dff_min": float(np.min(x)), "dff_max": float(np.max(x)),
         "dff_range": float(np.ptp(x)), "dff_median": float(np.median(x)), "dff_q10": float(q10),
         "dff_q25": float(q25), "dff_q75": float(q75), "dff_q90": float(q90), "dff_iqr": float(q75 - q25),
-        "dff_rms": float(np.sqrt(np.mean(x ** 2))), "dff_auc": float(np.trapezoid(x, dx=dt)),
-        "dff_slope": float((x[-1] - x[0]) / WINDOW_SECONDS), "dff_skew": float(skew(x, bias=True)),
-        "dff_kurtosis": float(kurtosis(x, bias=True)), "dff_autocorr1": ac1, "rate_mean": float(np.mean(rate)),
+        "dff_rms": float(np.sqrt(np.mean(x ** 2))), "dff_auc": float(np.mean(x) * WINDOW_SECONDS),
+        "dff_slope": float((x[-1] - x[0]) / WINDOW_SECONDS), "dff_skew": float(skew(x, bias=False)),
+        "dff_kurtosis": float(kurtosis(x, bias=False)), "dff_autocorr1": ac1, "rate_mean": float(np.mean(rate)),
         "rate_abs_mean": float(np.mean(np.abs(rate))), "rate_std": float(np.std(rate, ddof=1)),
         "rate_min": float(np.min(rate)), "rate_max": float(np.max(rate)), "rate_range": float(np.ptp(rate)),
         "rate_abs_max": float(np.max(np.abs(rate))), "rate_positive_ratio": float(np.mean(rate > 0)),
