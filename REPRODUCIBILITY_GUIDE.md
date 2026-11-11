@@ -19,7 +19,7 @@ flowchart LR
 
 ## Public file inventory
 
-- `Deidentified_10s_103_events/`: the 103 de-identified 10-s event segments used for the released computational workflow.
+- `103_raw_10s_segments_only.zip` (Release asset): 103 de-identified 10-s event segments, each retaining its time axis and original ΔF/F values without feature extraction.
 - `fig6_reproducibility/`: preprocessing, five-bit encoding, response-table mapping, feature construction, model fitting, evaluation, and figure-generation scripts.
 - `Fig6_S12_S13_reproducibility/`: scripts and source tables for the Figure 6, Figure S12, and Figure S13 analyses.
 - `models/` and model metadata: serialized ExtraTrees estimators, feature order, class mapping, and preprocessing metadata.
