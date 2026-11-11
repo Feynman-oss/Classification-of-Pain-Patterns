@@ -25,6 +25,12 @@ assignments, and all analysis code required after raw-file preprocessing. The
 `z_min` and `z_max` arguments are calculated from the training partition and
 are never estimated from a held-out segment.
 
+To start from the 103 released raw 10-s event files, download
+`103_raw_10s_segments_only.zip` from the v2.0.2 Release and run
+`figure6_complete_reproducibility/scripts/raw_to_window_features.py`. This
+explicitly reconstructs the window-level feature table before grouped model
+training and evaluation.
+
 ## Input format
 
 `example_10s_input.csv` illustrates the required input schema:

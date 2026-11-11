@@ -8,6 +8,7 @@ This directory replaces the earlier inference-only archive. It separates two mod
 ## Contents
 
 - `scripts/feature_pipeline.py`: 10-s resampling, 27 DFF feature extraction, five-bit/32-code RC lookup, nine RC features, fold-specific quantization and 195-feature aggregation.
+- `scripts/raw_to_window_features.py`: converts the released raw 10-s event CSVs or ZIP archive into the window-level feature table used by the downstream workflows.
 - `scripts/nested_grouped_training.py`: complete 5-fold outer/4-fold inner event-disjoint training, inner-fold threshold selection and out-of-fold prediction.
 - `scripts/train_window_extratrees.py`: deterministic ExtraTrees training, train-only threshold selection and the 9 RC groups × 9 ExtraTrees settings sensitivity analysis.
 - `scripts/statistics_and_figures.py`: paired event bootstrap, exact McNemar test, ROC curves, integer and row-normalized confusion matrices, and scripts for Fig. 6f, Fig. 6g, Fig. S12 and Fig. S13.
@@ -23,6 +24,9 @@ This directory replaces the earlier inference-only archive. It separates two mod
 ```bash
 python -m venv .venv
 .venv/Scripts/pip install -r requirements.txt
+.venv/Scripts/python scripts/raw_to_window_features.py \
+  --input 103_raw_10s_segments_only.zip \
+  --output outputs/raw_recomputed_window_features.csv
 .venv/Scripts/python run_all.py
 ```
 
