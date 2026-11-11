@@ -27,7 +27,8 @@ python -m venv .venv
 .venv/Scripts/python scripts/raw_to_window_features.py \
   --input 103_raw_10s_segments_only.zip \
   --output outputs/raw_recomputed_window_features.csv
-.venv/Scripts/python run_all.py
+.venv/Scripts/python run_all.py \
+  --windows outputs/raw_recomputed_window_features.csv
 ```
 
 On Linux/macOS, replace `.venv/Scripts/` with `.venv/bin/`.
