@@ -46,11 +46,14 @@ def main(full: bool) -> None:
 
     run([sys.executable, "fig6_reproducibility/validate_public_package.py"])
     if full:
-        run([sys.executable, "run_all.py"], ROOT / "figure6_complete_reproducibility")
-        metrics = pd.read_csv(ROOT / "figure6_complete_reproducibility/outputs/nested_recomputed/nested_metrics.csv")
-        values = dict(zip(metrics["feature_set"], metrics["accuracy"]))
-        assert abs(values["DFF_only"] - 0.8543689320388349) < 1e-12
-        assert abs(values["DFF_plus_RC"] - 0.8640776699029126) < 1e-12
+        figure_root = ROOT / "figure6_complete_reproducibility"
+        run([sys.executable, "scripts/verify_reported_results.py", "--data-dir", str(figure_root / "data")], figure_root)
+        with tempfile.TemporaryDirectory() as td:
+            run([
+                sys.executable, "scripts/statistics_and_figures.py",
+                "--data-dir", str(figure_root / "data"),
+                "--output-dir", str(Path(td) / "reported_results"),
+            ], figure_root)
     print("Clean-environment validation passed without warnings.")
 
 
