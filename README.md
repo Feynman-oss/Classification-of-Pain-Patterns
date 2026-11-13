@@ -7,9 +7,9 @@ The single-run raw current-voltage-time exports used to construct the nominal 32
 response table, together with an extraction script and SHA-256 manifest, are available in
 [`raw_device_response/`](raw_device_response/README.md).
 
-This repository contains the public code for processing an already prepared
-10-s fluorescence segment. It implements the signal transformation used in
-the manuscript:
+This repository contains deterministic inference examples and the frozen
+source tables used to reproduce the reported Figure 6 results. The manuscript
+figure package does not expose a second model-training entry point.
 
 1. load a prepared segment with `time_s` and `dff` columns;
 2. linearly resample the segment to 300 equally spaced points;
@@ -19,17 +19,10 @@ the manuscript:
 5. represent the level as a most-significant-bit-first five-bit code; and
 6. map the code to the measured four-channel device-response table.
 
-The repository does not redistribute raw animal photometry files. The complete
-public Figure 6 package contains de-identified processed features, fold
-assignments, and all analysis code required after raw-file preprocessing. The
-`z_min` and `z_max` arguments are calculated from the training partition and
-are never estimated from a held-out segment.
-
-To start from the 103 released raw 10-s event files, download
-`103_raw_10s_segments_only.zip` from the v2.0.2 Release and run
-`figure6_complete_reproducibility/scripts/raw_to_window_features.py`. This
-explicitly reconstructs the window-level feature table before grouped model
-training and evaluation.
+The repository does not redistribute raw animal photometry files. The exact
+reported Figure 6 values are verified from the frozen source tables by
+`figure6_complete_reproducibility/scripts/verify_reported_results.py` and
+redrawn by `statistics_and_figures.py`.
 
 ## Input format
 
@@ -118,10 +111,10 @@ artifact rather than animal data. The complete workflow is provided in
 [igure6_complete_reproducibility/](figure6_complete_reproducibility/README.md),
 with a frozen supplementary archive at
 [Figure6_Reproducibility_v2.0.1.zip](Figure6_Reproducibility_v2.0.1.zip).
-It includes both model branches, complete training and threshold selection,
-event-disjoint cross-validation, bootstrap analysis, McNemar testing, ROC
-analysis, and scripts for Fig. 6f, Fig. 6g, Fig. S12, and Fig. S13. Raw
-fluorescence data remain restricted as described in DATA_ACCESS.md.
+It includes the deterministic figure-replay scripts, bootstrap analysis,
+McNemar testing, ROC analysis, and scripts for Fig. 6f, Fig. 6g, Fig. S12,
+and Fig. S13. Raw fluorescence data remain restricted as described in
+DATA_ACCESS.md.
 
 ## Canonical manuscript release
 
