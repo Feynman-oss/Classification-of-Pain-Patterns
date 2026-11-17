@@ -30,3 +30,5 @@ python run_workflow.py
 ```
 
 The original animal data can only be accessed under the applicable institutional and animal-ethics data-governance procedure.
+
+The de-identified aggregated source workbook for Figure 5 is provided as igure_replay/data/F5.RAWdata.xlsx. It contains group-level plotting values and confidence intervals, not raw animal traces or source-linked identifiers.
